@@ -1,6 +1,8 @@
 var app = angular.module("userApp");
 app.controller("loginController", function($scope, $location, $rootScope, $resource, $http) {
   $scope.page = "Login";
+  $scope.userid="";
+  $scope.password="";
   $scope.validate = function() {
     $http({
       url: '/login',
