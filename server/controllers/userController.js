@@ -193,7 +193,10 @@ module.exports.addComment = function(req, res) {
 }
 
 module.exports.addComplaint = function(req, res) {
-  Place.findOne({latitude: req.body.latitude, longitude: req.body.longitude}, function(err, result) {
+  Place.findOne({ $and: [
+    {latitude: req.body.latitude},
+    {longitude: req.body.longitude}
+  ]}, function(err, result) {
     if(err) {
       console.log("Failed to complaint");
       console.log(err);
@@ -215,10 +218,39 @@ module.exports.addComplaint = function(req, res) {
             console.log(err);
           }
           else {
-            res.send(result);
+            console.log(body);
+            Place.update({_id:result._id}, {$push: {complaints: body._id}}, function(err, result) {
+              if(err) {
+                console.log("Couldn't link");
+                console.log(err);
+                res.end();
+              }
+              else {
+                res.send(body);
+              }
+            })
           }
         })
       }
+    }
+  })
+}
+
+module.exports.listComplaints = function(req, res) {
+  Complaint.find({ $and: [
+    {latitude: req.body.latitude},
+    {longitude: req.body.longitude}
+  ]}).populate({
+    path: 'place',
+    model: 'Place'
+  }).exec(function(err, result) {
+    if(err) {
+      console.log("Error listing");
+      console.log(err);
+      res.send({});
+    }
+    else {
+      res.send(result);
     }
   })
 }
