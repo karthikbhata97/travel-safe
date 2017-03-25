@@ -2,11 +2,12 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var placeSchema = new Schema({
-  name: String,
+  address: String,
   latitude: Number,
   longitude: Number,
   rating: Number,
-  numberOfRating: Number,
+  numberOfSafetyRating: Number,
+  numberOfGenRating: Number,
   description: String,
   safety: Number,
   comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
