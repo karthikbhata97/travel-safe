@@ -1,10 +1,71 @@
-<h1>myplace</h1>
-<p>
-  {{details}}
-</p>
+<div>
+
+<div class=well>
+  <!--put logo here -->
+</div>
+<style>
+textarea.color { color:black;
+
+}
+body {
+background: url(/views/images.jpg);}
+</style>
+
+			<div class="col-md-8 col-sm-12" ng-repeat="item in places" >
+
+<font color="white">
+          <ul>LOCATION:{{item.address}}</ul>
+			   <ul>RATING:{{item.rating}}</ul>
+			   <ul>SAFETY-RATING:{{item.numberOfSafetyRating}}</ul>
+			   <ul>GENERAL-RATING:{{item.numberOfGenRating}}</ul>
+			   <ul>DESCRIPTION:{{item.description}}</ul>
+         <ul>COMMENTS:</ul>
+</font>
+<hr>
+
+			</div>
 
 
-<h1>all</h1>
-<p>
-  {{places}}
-</p>
+			<div class="col-md-4 col-sm-12" ng-repeat="item in details">
+<font color="white">
+        <ul>LOCATION:{{item.address}}</ul>
+			   <ul>RATING:{{item.rating}}</ul>
+			   <ul>SAFETY-RATING:{{item.numberOfSafetyRating}}</ul>
+			   <ul>GENERAL-RATING:{{item.numberOfGenRating}}</ul>
+			   <ul>DESCRIPTION:{{item.description}}</ul>
+			   <ul ng-repeat="comment in comments">
+			   	  <ul>{{comment.comments}}</ul>
+			   </ul>
+         <ul>RATE:</ul>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type=radio name="rate" value=1 ng-model="rating">&nbsp; 1
+        <input type=radio name="rate" value=2 ng-model="rating">&nbsp; 2
+
+        <input type=radio name="rate" value=3 ng-model="rating">&nbsp; 3
+        <input type=radio name="rate" value=4 ng-model="rating">&nbsp; 4
+        <input type=radio name="rate" value=5 ng-model="rating">&nbsp; 5
+
+        <ul>SAFETY-RATE:</ul>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type=radio name="rate1" value=1 ng-model="srating">&nbsp; 1
+        <input type=radio name="rate1" value=2 ng-model="srating">&nbsp; 2
+
+        <input type=radio name="rate1" value=3 ng-model="srating">&nbsp; 3
+        <input type=radio name="rate1" value=4 ng-model="srating">&nbsp; 4
+        <input type=radio name="rate1" value=5 ng-model="srating">&nbsp; 5
+
+
+           <ul>
+
+
+        COMMENTS: <br> ;<textarea  ng-model="comments" maxlength="200" rows="2" column="400" class="color" ></textarea>
+         &nbsp;&nbsp; &nbsp;&nbsp; <font color:"black"> <button class ng-click="addCommentAndRating()">comment</button></font></ul>
+
+
+
+      </div>
+</font>
+
+
+
+		</div>

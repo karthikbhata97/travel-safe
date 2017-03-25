@@ -17,5 +17,4 @@ app.controller("loginController", function($scope, $location, $rootScope, $resou
     $scope.errmessage += data.data.reason;
   }, function(err){})
   }
-
 });

@@ -3,6 +3,9 @@ app.controller("userdashboardController", function($scope, $route, $location, $h
 
 $scope.places= []
 $scope.details= []
+$scope.comments=""
+$scope.rating=null;
+$scope.srating=null;
 $scope.coordinates = {
   latitude:null,
   longitude:null
@@ -48,4 +51,10 @@ var latlong = function() {
 }
   var codeLatLng = function(lat, lng) {}
 latlong();
+
+
+$scope.addCommentAndRating = function () {
+  console.log(rating);
+};
+
 });
