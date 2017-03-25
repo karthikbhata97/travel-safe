@@ -1,5 +1,5 @@
 var app = angular.module("userApp");
-app.controller("userdashboardController", function($scope, $route, $location, $http, $resource, $cookies, FileName, LoginStatus) {
+app.controller("userdashboardController", function($scope, $route, $location, $http, $resource, FileName, LoginStatus) {
 
 $scope.places= []
 $scope.cooridnates = {latitude:"",longitude:"" };
