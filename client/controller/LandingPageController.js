@@ -1,12 +1,14 @@
 var app = angular.module("userApp");
-app.controller("userdashboardController", function($scope, $route, $location, $http, $resource, FileName, LoginStatus) {
+app.controller("userdashboardController", function($scope, $route, $location, $http, $resource) {
 
 $scope.places= []
 $scope.cooridnates = {latitude:"",longitude:"" };
 var nearby = $resource('/api/nearby');
 
-var geocoder = new google.maps.Geocoder();
+
 function latlong() {
+
+  var geocoder = new google.maps.Geocoder();
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(function successFunction(position) {
     var lat = position.coords.latitude;
