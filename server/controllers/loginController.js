@@ -1,6 +1,7 @@
 var User = require('../models/users').users;
 
 module.exports.login = function(req, res) {
+  console.log(req.body);
   User.findOne({userid: req.body.userid}, function(err, result) {
     if(err) {
       console.log("Error logging in:");
