@@ -36,12 +36,14 @@ module.exports.myPlace = function(req, res) {
             console.log(err);
           }
           else {
-            res.send(result);
+            console.log(result);
+            res.send([result]);
           }
         })
       }
       else {
-        res.send(result);
+        console.log(result);
+        res.send([result]);
       }
     }
   })

@@ -2,7 +2,7 @@ var app = angular.module("userApp");
 app.controller("userdashboardController", function($scope, $route, $location, $http, $resource) {
 
 $scope.places= []
-$scope.details= {}
+$scope.details= []
 $scope.coordinates = {
   latitude:null,
   longitude:null
@@ -26,12 +26,14 @@ var latlong = function() {
       console.log(results)
         if (results[1]) {
      var	txt = document.createTextNode(results[0].formatted_address);
-     myplace.query({latitude:$scope.coordinates.latitude,longitude:$scope.coordinates.longitude,address:txt.textContent},function(result){
-     $scope.details = result;
-      });
+
     nearby.query({latitude:$scope.coordinates.latitude,longitude:$scope.coordinates.longitude,address:txt.textContent},function(result){
-    $scope.places = result;
+      $scope.places = result;
     });
+    myplace.query({latitude:$scope.coordinates.latitude,longitude:$scope.coordinates.longitude,address:txt.textContent},function(result){
+      $scope.details = result;
+     });
+
       } else {
           alert("No results found");
         }
