@@ -19,7 +19,7 @@ app.use('/client', express.static(__dirname + '/client'));
 app.use(express.static(__dirname + 'public'));
 
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/client/views/loginnew.html');
+    res.sendFile(__dirname + '/client/index.html');
 });
 
 app.post('/login', loginController.login);

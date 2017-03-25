@@ -83,7 +83,7 @@ app.config(function($routeProvider) {
         }
       }
     },
-    templateUrl: '/user/views/login.html',
+    templateUrl: '/views/login.html',
     controller: 'loginController'
   })
   .when('/LandingPage', {
@@ -94,7 +94,7 @@ app.config(function($routeProvider) {
         }
       }
     },
-    templateUrl: '/user/views/LandingPage.html',
+    templateUrl: '/views/LandingPage.html',
     controller: 'LandingPageController'
   })
   .otherwise({
