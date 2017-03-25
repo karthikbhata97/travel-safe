@@ -10,7 +10,8 @@ var placeSchema = new Schema({
   numberOfGenRating: Number,
   description: String,
   safety: Number,
-  comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
+  comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
+  complaints: [{type: Schema.Types.ObjectId, ref: 'Complaint'}]
 });
 
 module.exports.places = mongoose.model('Place', placeSchema);

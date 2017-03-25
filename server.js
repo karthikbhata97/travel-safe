@@ -24,6 +24,8 @@ app.get('/', function(req, res) {
 app.post('/login', loginController.login);
 app.get('/api/nearby', userController.listPlaces);
 app.get('/api/myplace', userController.myPlace);
+app.post('/api/addcomment', userController.addComment);
+app.get('/test', userController.getActivity);
 
 
 app.listen(3000, function() {
