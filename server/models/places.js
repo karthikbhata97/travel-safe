@@ -7,7 +7,8 @@ var placeSchema = new Schema({
   longitude: Number,
   rating: Number,
   numberOfRating: Number,
-  description: String
+  description: String,
+  safety: Number,
   comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
 });
 

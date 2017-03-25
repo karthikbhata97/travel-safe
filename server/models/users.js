@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-    schema = mongoose.Schema;
+    Schema = mongoose.Schema;
 
 var userSchema = new Schema ({
     userid: {type: String, index: {unique: true, dropDups: true}},
