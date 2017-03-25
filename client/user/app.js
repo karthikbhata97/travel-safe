@@ -50,7 +50,7 @@ app.factory('FileSizeError', function() {
     }
   }
 });
-
+/*
 app.service('uploadAPI', function($http) {
   return {
     upload: function(file) {
@@ -72,30 +72,30 @@ app.service('uploadAPI', function($http) {
     }
   }
 });
-
+*/
 app.config(function($routeProvider) {
   $routeProvider
   .when('/login', {
     resolve: {
       "check": function($location, $cookies, LoginStatus) {
         if($cookies.get('loggedin')) {
-          $location.path('/'+$cookies.get('dash_group'))  ;
+          $location.path('/'+$cookies.get('LandingPage'))  ;
         }
       }
     },
     templateUrl: '/user/views/login.html',
     controller: 'loginController'
   })
-  .when('/user', {
+  .when('/LandingPage', {
     resolve: {
       "check": function($location, $cookies, LoginStatus) {
-        if(!$cookies.get('dash_loggedin')||$cookies.get('dash_group')!='user') {
-          $location.path('/login');
+        if(!$cookies.get('dash_loggedin')) {
+          $location.path('/LandingPage');
         }
       }
     },
-    templateUrl: '/user/views/user.html',
-    controller: 'userController'
+    templateUrl: '/user/views/LandingPage.html',
+    controller: 'LandingPageController'
   })
   .otherwise({
     redirectTo: '/login'
