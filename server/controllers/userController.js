@@ -4,7 +4,10 @@ var Comment = require('../models/comments').comments;
 var Media = require('../models/comments').media;
 
 module.exports.listPlaces = function(req, res) {
-  Place.find({}, function(err, result) {
+  Place.find({}).populate({
+    path: 'comments',
+    model: 'Comment'
+  }).exec(function(err, result) {
     if(!result) res.send({});
     else {
       var arr=[];
@@ -16,7 +19,9 @@ module.exports.listPlaces = function(req, res) {
   });
 };
 
-module.exports.ratePlace = function(req, res) {}
+module.exports.ratePlace = function(req, res) {
+
+}
 
 module.exports.addComment = function(req, res) {
   User.findOne({userid: req.userid}, function(err, result) {
