@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/login', loginController.login);
-app.post('/nearby', userController.listPlaces);
+app.get('/api/nearby', userController.listPlaces);
 
 
 app.listen(3000, function() {

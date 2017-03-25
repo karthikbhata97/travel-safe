@@ -16,7 +16,7 @@ module.exports.listPlaces = function(req, res) {
     else {
       var arr=[];
       for(var i=0;i<result.length;i++) {
-        if(Math.abs(result[i].latitude-mylat)<=1&&Math.abs(result[i].longitude-mylong)<=1) {
+        if(Math.abs(result[i].latitude-mylat)>=0&&Math.abs(result[i].longitude-mylong)>=0) {
           arr.push(result[i]);
         }
         if(i==result.length-1) {

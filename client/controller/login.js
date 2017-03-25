@@ -4,7 +4,6 @@ app.controller("loginController", function($scope, $location, $rootScope, $resou
   $scope.userid="";
   $scope.password="";
   $scope.validate = function() {
- alert($scope.userid);
     $http({
       url: '/login',
       method: 'post',
@@ -13,7 +12,6 @@ app.controller("loginController", function($scope, $location, $rootScope, $resou
     }).then(function(data){
     if(data.data.success==true){
         $location.path('/LandingPage').replace();
-	alert("HERLLO");
     }
     else
     $scope.errmessage += data.data.reason;

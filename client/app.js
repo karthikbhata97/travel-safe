@@ -9,7 +9,7 @@ app.config(function($routeProvider) {
   })
   .when('/LandingPage', {
     templateUrl: '/views/LandingPage.html',
-    controller: 'LandingPageController'
+    controller: 'userdashboardController'
   })
   .otherwise({
     redirectTo: '/login'
