@@ -12,6 +12,8 @@ mongoose.connect('mongodb://localhost:27017/test');
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+app.use(bodyParser.json())
+
 
 app.use(morgan('dev'));
 app.use('/', express.static(__dirname + '/client/'));
