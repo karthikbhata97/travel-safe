@@ -20,7 +20,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/login', loginController.login);
-app.get('/nearby', userController.listPlaces);
+app.post('/nearby', userController.listPlaces);
 
 
 app.listen(3000, function() {
