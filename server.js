@@ -14,10 +14,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(morgan('dev'));
-
-app.use('/client', express.static(__dirname + '/client'));
-app.use(express.static(__dirname + 'public'));
-
+app.use('/', express.static(__dirname + '/client/'));
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/client/index.html');
 });

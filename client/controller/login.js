@@ -20,6 +20,7 @@ app.controller("loginController", function($scope, $location, $rootScope, $resou
       $cookies.put('dash_loggedin', true);
       $cookies.put('dash_userid', $scope.userid);
         $location.path('/LandingPage').replace();
+	alert("HERLLO");
     }
     else
     $scope.errmessage += data.data.reason;
