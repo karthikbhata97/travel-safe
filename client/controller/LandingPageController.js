@@ -72,4 +72,41 @@ app.controller("userdashboardController", function($scope, $route, $location, $h
     }, function(err){});
   }
 
+  $scope.addrate = function (val) {
+    alert(val);
+    var thisdata = {
+      latitude: $scope.coordinates.latitude,
+      longitude: $scope.coordinates.longitude,
+      address: $scope.address,
+      rating: val
+    }
+    $http({
+      url: '/api/addrate',
+      method: 'post',
+      data: thisdata
+    }).then(function(data){
+      $route.reload();
+    }, function(err){});
+  }
+
+  $scope.addsafe = function (val) {
+    alert(val);
+    var thisdata = {
+      latitude: $scope.coordinates.latitude,
+      longitude: $scope.coordinates.longitude,
+      address: $scope.address,
+      rating: val
+    }
+    $http({
+      url: '/api/addsafe',
+      method: 'post',
+      data: thisdata
+    }).then(function(data){
+      $route.reload();
+    }, function(err){});
+  }
+
+
+
+
 });
