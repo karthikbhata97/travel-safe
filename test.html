@@ -25,9 +25,6 @@ textarea.color {
 			   <ul>GENERAL-RATING:{{item.numberOfGenRating}}</ul>
 			   <ul>DESCRIPTION:{{item.description}}</ul>
          <ul>COMMENTS:</ul>
-				 <ul ng-repeat="comment in item.comments">
-						<ul>{{comment.description}}</ul>
-				 </ul>
 </font>
 <hr>
 
@@ -42,7 +39,7 @@ textarea.color {
 			   <ul>GENERAL-RATING:{{item.numberOfGenRating}}</ul>
 			   <ul>DESCRIPTION:{{item.description}}</ul>
 			   <ul ng-repeat="comment in item.comments">
-			   	  <ul>{{comment.description}}</ul>
+			   	  <ul>{{comment.comments}}</ul>
 			   </ul>
          <ul>RATE:</ul>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

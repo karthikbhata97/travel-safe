@@ -159,6 +159,7 @@ module.exports.safetyRatePlace = function(req, res) {
 
 
 module.exports.addComment = function(req, res) {
+  console.log(req.body);
   var date_now = new Date();
     var new_comment = {
       user: req.body.userid,

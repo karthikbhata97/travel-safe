@@ -1,60 +1,75 @@
 var app = angular.module("userApp");
-app.controller("userdashboardController", function($scope, $route, $location, $http, $resource) {
+app.controller("userdashboardController", function($scope, $route, $location, $http, $resource, ActiveUser) {
 
-$scope.places= []
-$scope.details= []
-$scope.comments=""
-$scope.rating=null;
-$scope.srating=null;
-$scope.coordinates = {
-  latitude:null,
-  longitude:null
-};
-var nearby = $resource('/api/nearby');
-var myplace= $resource('/api/myplace');
-
-
-var latlong = function() {
-  var geocoder = new google.maps.Geocoder();
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(function successFunction(position) {
-    var lat = position.coords.latitude;
-    var lng = position.coords.longitude;
-    $scope.coordinates.latitude=lat;
-    $scope.coordinates.longitude=lng;
-
-    var latlng = new google.maps.LatLng(lat, lng);
-    geocoder.geocode({'latLng': latlng}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-      console.log(results)
-        if (results[1]) {
-     var	txt = document.createTextNode(results[0].formatted_address);
-
-    nearby.query({latitude:$scope.coordinates.latitude,longitude:$scope.coordinates.longitude,address:txt.textContent},function(result){
-      $scope.places = result;
-    });
-    myplace.query({latitude:$scope.coordinates.latitude,longitude:$scope.coordinates.longitude,address:txt.textContent},function(result){
-      $scope.details = result;
-     });
-
-      } else {
-          alert("No results found");
-        }
-      } else {
-        alert("Geocoder failed due to: " + status);
-      }
-    });
-},function errorFunction(){
-    alert("Geocoder failed");
-});
+  $scope.places= []
+  $scope.details= []
+  $scope.rating=null;
+  $scope.srating=null;
+  $scope.comment = {
+    newcomment: null
   }
-}
+  $scope.coordinates = {
+    latitude:null,
+    longitude:null
+  };
+  var nearby = $resource('/api/nearby');
+  var myplace= $resource('/api/myplace');
+
+
+  var latlong = function() {
+    var geocoder = new google.maps.Geocoder();
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(function successFunction(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        $scope.coordinates.latitude=lat;
+        $scope.coordinates.longitude=lng;
+
+        var latlng = new google.maps.LatLng(lat, lng);
+        geocoder.geocode({'latLng': latlng}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            console.log(results)
+            if (results[1]) {
+              var	txt = document.createTextNode(results[0].formatted_address);
+              $scope.address = txt.textContent;
+              nearby.query({latitude:$scope.coordinates.latitude,longitude:$scope.coordinates.longitude,address:txt.textContent},function(result){
+                $scope.places = result;
+              });
+              myplace.query({latitude:$scope.coordinates.latitude,longitude:$scope.coordinates.longitude,address:txt.textContent},function(result){
+                $scope.details = result;
+              });
+
+            } else {
+              alert("No results found");
+            }
+          } else {
+            alert("Geocoder failed due to: " + status);
+          }
+        });
+      },function errorFunction(){
+        alert("Geocoder failed");
+      });
+    }
+  }
   var codeLatLng = function(lat, lng) {}
-latlong();
+  latlong();
 
 
-$scope.addCommentAndRating = function () {
-  console.log(rating);
-};
+  $scope.addComment = function () {
+    var thisdata = {
+      latitude: $scope.coordinates.latitude,
+      longitude: $scope.coordinates.longitude,
+      address: $scope.address,
+      comment: $scope.comment.newcomment,
+      userid: ActiveUser.getuser()
+    }
+    $http({
+      url: '/api/addcomment',
+      method: 'post',
+      data: thisdata
+    }).then(function(data){
+      $route.reload();
+    }, function(err){});
+  }
 
 });

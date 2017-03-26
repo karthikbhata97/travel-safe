@@ -1,5 +1,5 @@
 var app = angular.module("userApp");
-app.controller("loginController", function($scope, $location, $rootScope, $resource, $http) {
+app.controller("loginController", function($scope, $location, $rootScope, $resource, $http, ActiveUser) {
   $scope.page = "Login";
   $scope.userid="";
   $scope.password="";
@@ -11,6 +11,7 @@ app.controller("loginController", function($scope, $location, $rootScope, $resou
 
     }).then(function(data){
     if(data.data.success==true){
+        ActiveUser.setuser($scope.userid);
         $location.path('/LandingPage').replace();
     }
     else

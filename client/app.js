@@ -16,6 +16,21 @@ app.config(function($routeProvider) {
   })
 });
 
+app.factory('ActiveUser', function() {
+  var who = {
+    user: null
+  }
+  return {
+    getuser: function() {
+      return who.user;
+    },
+    setuser: function(val) {
+      who.user = val
+    }
+  }
+})
+
+
 app.controller("mainController", function($scope, $location) {
   $scope.page = "home";
 });
