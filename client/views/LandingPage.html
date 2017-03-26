@@ -4,16 +4,23 @@
   <!--put logo here -->
 </div>
 <style>
-textarea.color { color:black;
 
-}
 body {
 background: url(/views/images.jpg);
 }
 
-textarea.color {
-	color: Black
+#current{
+  position:absolute;
+
+  top: -20;
+    right: 0;
 }
+#current .comment{
+  color:black;
+}
+
+.com { width: 300px; height: 75px }
+
 </style>
 
 			<div class="col-md-8 col-sm-12" ng-repeat="item in places" >
@@ -33,8 +40,8 @@ textarea.color {
 
 			</div>
 
-
-			<div class="col-md-4 col-sm-12" ng-repeat="item in details">
+<br>
+			<div class="col-md-4 col-sm-12" ng-repeat="item in details" id="current">
 <font color="white">
         <ul>LOCATION:{{item.address}}</ul>
 			   <ul>RATING:{{item.rating}}</ul>
@@ -62,14 +69,15 @@ textarea.color {
         <input type=radio name="rate1" value=4 ng-model="srating">&nbsp; 4
         <input type=radio name="rate1" value=5 ng-model="srating">&nbsp; 5
 
+<br>
+      	<form ng-submit="addComment()" class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <textarea ng-model="comment.newcomment" maxlength=200 class="com"></textarea>
 
-      	<form ng-submit="addComment()" style="color:black">
-					<input type="text" ng-model="comment.newcomment" />
 					<input type="submit" />
 				</form>
 
+      </font>
       </div>
-</font>
 
 
 
