@@ -8,7 +8,6 @@ app.controller("registerController", function($scope, $location, $rootScope, $re
 	$location.path('/login').replace();
 }
   $scope.validate = function() {
-    alert("Hello")
     $http({
       url: '/register',
       method: 'post',

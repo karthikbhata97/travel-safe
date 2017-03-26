@@ -3,6 +3,9 @@ app.controller("loginController", function($scope, $location, $rootScope, $resou
   $scope.page = "Login";
   $scope.userid="";
   $scope.password="";
+  $scope.openregister = function () {
+    $location.path('/register').replace();
+  };
   $scope.validate = function() {
     $http({
       url: '/login',
