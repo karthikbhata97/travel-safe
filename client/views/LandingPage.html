@@ -117,8 +117,8 @@ position:absolute;
 <font color="white">
           <ul>LOCATION:{{item.address}}</ul>
 			   <ul>RATING:{{item.rating}}</ul>
-			   <ul>SAFETY-RATING:{{item.safety}}</ul>
-			   <ul>GENERAL-RATING:{{item.rating}}</ul>
+			   <ul>SAFETY-RATING:{{item.safety| number: 2}}</ul>
+			   <ul>GENERAL-RATING:{{item.rating| number: 2}}</ul>
          <ul>COMMENTS:</ul>
 				 <ul ng-repeat="comment in item.comments">
 						<ul>{{comment.description}} by {{comment.user}}</ul>
@@ -137,8 +137,8 @@ position:absolute;
 <font color="white">
         <ul>LOCATION:{{item.address}}</ul>
 			   <ul>RATING:{{item.rating}}</ul>
-			   <ul>SAFETY-RATING:{{item.safety}}</ul>
-			   <ul>GENERAL-RATING:{{item.rating}}</ul>
+			   <ul>SAFETY-RATING:{{item.safety | number: 2}}</ul>
+			   <ul>GENERAL-RATING:{{item.rating| number: 2}}</ul>
 			   <ul ng-repeat="comment in item.comments">
 			   	  <ul>{{comment.description}} by {{comment.user}}</ul>
 			   </ul>

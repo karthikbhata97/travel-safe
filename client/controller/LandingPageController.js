@@ -25,8 +25,8 @@ app.controller("userdashboardController", function($scope, $route, $location, $h
       navigator.geolocation.getCurrentPosition(function successFunction(position) {
         var lat = position.coords.latitude;
         var lng = position.coords.longitude;
-        $scope.coordinates.latitude=lat;
-        $scope.coordinates.longitude=lng;
+        $scope.coordinates.latitude=lat.toFixed(4);
+        $scope.coordinates.longitude=lng.toFixed(4);
 
         var latlng = new google.maps.LatLng(lat, lng);
         geocoder.geocode({'latLng': latlng}, function(results, status) {

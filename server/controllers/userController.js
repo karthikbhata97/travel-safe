@@ -121,13 +121,12 @@ module.exports.generalRatePlace = function(req, res) {
       console.log(err);
     }
     else {
-      var new_data = result;
-      new_data.numberOfGenRating = result.numberOfGenRating + 1;
-      new_data.rating = (result.numberOfGenRating * result.rating + req.body.rate)/new_data.numberOfGenRating;
+      var new_numberOfGenRating = result.numberOfGenRating + 1;
+      var new_rating = (result.numberOfGenRating * result.rating + req.body.rate)/new_numberOfGenRating;
       Place.update({ $and: [
         {latitude: req.body.latitude},
         {longitude: req.body.longitude}
-      ]}, {$set: {numberOfGenRating: new_data.numberOfGenRating, rating: new_data.rating}}, function(err, result) {
+      ]}, {$set: {numberOfGenRating: new_numberOfGenRating, rating: new_rating}}, function(err, result) {
         if(err) {
           console.log("Error");
           console.log(err);
@@ -150,13 +149,12 @@ module.exports.safetyRatePlace = function(req, res) {
       console.log(err);
     }
     else {
-      var new_data = result;
-      new_data.numberOfSafetyRating = result.numberOfSafetyRating + 1;
-      new_data.safety = (result.numberOfSafetyRating * result.safety + req.body.safety)/new_data.numberOfSafetyRating;
+      var new_numberOfSafetyRating = result.numberOfSafetyRating + 1;
+      var new_safety = ((result.numberOfSafetyRating * result.safety) + req.body.safety)/new_numberOfSafetyRating;
       Place.update({ $and: [
         {latitude: req.body.latitude},
         {longitude: req.body.longitude}
-      ]}, {$set: {numberOfSafetyRating: new_data.numberOfSafetyRating, safety: new_data.safety}}, function(err, result) {
+      ]}, {$set: {numberOfSafetyRating: new_numberOfSafetyRating, safety: new_safety}}, function(err, result) {
         if(err) {
           console.log("Error");
           console.log(err);
