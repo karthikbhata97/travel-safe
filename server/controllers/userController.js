@@ -122,9 +122,12 @@ module.exports.generalRatePlace = function(req, res) {
     }
     else {
       var new_data = result;
-      new_data.numberOfGenRating = result.numberOfGenRating+1;
+      new_data.numberOfGenRating = result.numberOfGenRating + 1;
       new_data.rating = (result.numberOfGenRating * result.rating + req.body.rate)/new_data.numberOfGenRating;
-      Place.update(result, {$set: {numberOfGenRating: new_data.numberOfGenRating, rate: new_data.rating}}, function(err, result) {
+      Place.update({ $and: [
+        {latitude: req.body.latitude},
+        {longitude: req.body.longitude}
+      ]}, {$set: {numberOfGenRating: new_data.numberOfGenRating, rating: new_data.rating}}, function(err, result) {
         if(err) {
           console.log("Error");
           console.log(err);

@@ -11,6 +11,10 @@ app.config(function($routeProvider) {
     templateUrl: '/views/LandingPage.html',
     controller: 'userdashboardController'
   })
+  .when('/register', {
+    templateUrl: '/views/register.html',
+    controller: 'registerController'
+  })
   .otherwise({
     redirectTo: '/login'
   })

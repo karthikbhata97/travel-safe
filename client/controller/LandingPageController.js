@@ -8,6 +8,9 @@ app.controller("userdashboardController", function($scope, $route, $location, $h
   $scope.comment = {
     newcomment: null
   }
+  $scope.complaint = {
+    newcomplaint: null
+  }
   $scope.coordinates = {
     latitude:null,
     longitude:null
@@ -71,5 +74,57 @@ app.controller("userdashboardController", function($scope, $route, $location, $h
       $route.reload();
     }, function(err){});
   }
+
+  $scope.addrate = function(val) {
+    var thisdata = {
+      latitude: $scope.coordinates.latitude,
+      longitude: $scope.coordinates.longitude,
+      address: $scope.address,
+      rate: val,
+      userid: ActiveUser.getuser()
+    }
+    $http({
+      url: '/api/genrate',
+      method: 'post',
+      data: thisdata
+    }).then(function(data) {
+      $route.reload();
+    }, function(err){});
+  }
+
+
+$scope.addsafe = function(val) {
+  var thisdata = {
+    latitude: $scope.coordinates.latitude,
+    longitude: $scope.coordinates.longitude,
+    address: $scope.address,
+    safety: val,
+    userid: ActiveUser.getuser()
+  }
+  $http({
+    url: '/api/saferate',
+    method: 'post',
+    data: thisdata
+  }).then(function(data) {
+    $route.reload();
+  }, function(err){});
+}
+
+$scope.addComplaint = function() {
+  var thisdata = {
+    latitude: $scope.coordinates.latitude,
+    longitude: $scope.coordinates.longitude,
+    address: $scope.address,
+    complaint: $scope.complaint.newcomplaint,
+    userid: ActiveUser.getuser()
+  }
+  $http({
+    url: '/api/addcomplaint',
+    method: 'post',
+    data: thisdata
+  }).then(function(data) {
+    $route.reload();
+  }, function(err){});
+}
 
 });

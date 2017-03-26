@@ -1,3 +1,16 @@
+<div>
+
+<div class=well>
+  <!--put logo here -->
+</div>
+
+
+
+
+
+
+
+
 <style>
 div.stars {
   width: 20px;
@@ -35,20 +48,7 @@ label.star:before {
 }
 </style>
 
-<div class="stars">
-  <span>
-    <input class="star star-5" id="star-5" type="radio" name="star" ng-click="addrate(5)"/>
-    <label class="star star-5" for="star-5"></label>
-    <input class="star star-4" id="star-4" type="radio" name="star" ng-click="addrate(4)"/>
-    <label class="star star-4" for="star-4"></label>
-    <input class="star star-3" id="star-3" type="radio" name="star" ng-click="addrate(3)"/>
-    <label class="star star-3" for="star-3"></label>
-    <input class="star star-2" id="star-2" type="radio" name="star" ng-click="addrate(2)"/>
-    <label class="star star-2" for="star-2"></label>
-    <input class="star star-1" id="star-1" type="radio" name="star" ng-click="addrate(1)"/>
-    <label class="star star-1" for="star-1"></label>
-</span>
-</div>
+
 
 <style>
 div.starsnew {
@@ -56,11 +56,12 @@ div.starsnew {
   display: inline-block;
 }
 
-input.starnew { display: none; }
+input.starnew { display: none;}
 
 label.starnew {
   float: right;
   padding: 2px;
+
   font-size: 15px;
   color: #444;
   transition: all .2s;
@@ -87,26 +88,6 @@ label.starnew:before {
 }
 </style>
 
-<div class="starsnew">
-	<ul>
-    <input class="starnew starnew-5" id="starnew-5" type="radio" name="starnew"  ng-click="addsafe(5)"/>
-    <label class="starnew starnew-5" for="starnew-5"></label>
-    <input class="starnew starnew-4" id="starnew-4" type="radio" name="starnew" ng-click="addsafe(4)"/>
-    <label class="starnew starnew-4" for="starnew-4"></label>
-    <input class="starnew starnew-3" id="starnew-3" type="radio" name="starnew" ng-click="addsafe(3)"/>
-    <label class="starnew starnew-3" for="starnew-3"></label>
-    <input class="starnew starnew-2" id="starnew-2" type="radio" name="starnew" ng-click="addsafe(2)"/>
-    <label class="starnew starnew-2" for="starnew-2"></label>
-    <input class="starnew starnew-1" id="starnew-1" type="radio" name="starnew" ng-click="addsafe(1)"/>
-    <label class="starnew starnew-1" for="starnew-1"></label>
-</ul>
-</div>
-
-<div>
-
-<div class=well>
-  <!--put logo here -->
-</div>
 <style>
 
 body {
@@ -114,6 +95,11 @@ background: url(/views/images.jpg);
 font-family: "Lato"
 }
 
+#right{
+position:absolute;
+  top:-70;
+  right:0;
+}
 #current{
   position:absolute;
 
@@ -125,9 +111,7 @@ font-family: "Lato"
 }
 
 .com { width: 300px; height: 75px }
-
 </style>
-
 			<div class="col-md-8 col-sm-12" ng-repeat="item in places" >
 
 <font color="white">
@@ -135,11 +119,14 @@ font-family: "Lato"
 			   <ul>RATING:{{item.rating}}</ul>
 			   <ul>SAFETY-RATING:{{item.safety}}</ul>
 			   <ul>GENERAL-RATING:{{item.rating}}</ul>
-			   <ul>DESCRIPTION:{{item.description}}</ul>
          <ul>COMMENTS:</ul>
 				 <ul ng-repeat="comment in item.comments">
-						<ul>{{comment.description}}</ul>
+						<ul>{{comment.description}} by {{comment.user}}</ul>
 				 </ul>
+         <ul>Complaints:</ul>
+        <ul ng-repeat="complaint in item.complaints">
+           <ul>{{complaint.complaint}}</ul>
+        </ul>
 </font>
 <hr>
 
@@ -152,38 +139,54 @@ font-family: "Lato"
 			   <ul>RATING:{{item.rating}}</ul>
 			   <ul>SAFETY-RATING:{{item.safety}}</ul>
 			   <ul>GENERAL-RATING:{{item.rating}}</ul>
-			   <ul>DESCRIPTION:{{item.description}}</ul>
 			   <ul ng-repeat="comment in item.comments">
-			   	  <ul>{{comment.description}}</ul>
+			   	  <ul>{{comment.description}} by {{comment.user}}</ul>
 			   </ul>
+         <ul>Complaints:</ul>
+        <ul ng-repeat="complaint in item.complaints">
+           <ul>{{complaint.complaint}}</ul>
+        </ul>
          <ul>RATE:</ul>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type=radio name="rate" value=1 ng-model="rating">&nbsp; 1
-        <input type=radio name="rate" value=2 ng-model="rating">&nbsp; 2
 
-        <input type=radio name="rate" value=3 ng-model="rating">&nbsp; 3
-        <input type=radio name="rate" value=4 ng-model="rating">&nbsp; 4
-        <input type=radio name="rate" value=5 ng-model="rating">&nbsp; 5
+                       <ul><button ng-click="addrate(1)" name="1" style="background-color: #33a2ea" value=1><font color="black">1</font></button>
+                       <button ng-click="addrate(2)" style="background-color: #33a2ea"><font color="black">2</font></button>
+                       <button ng-click="addrate(3)" style="background-color: #33a2ea"><font color="black">3</font></button>
+                       <button ng-click="addrate(4)" style="background-color: #33a2ea"><font color="black">4</font></button>
+                       <button ng-click="addrate(5)" style="background-color: #33a2ea"><font color="black">5</font></button> </ul>
+
+
+
+
+<br>
+<br>
 
         <ul>SAFETY-RATE:</ul>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type=radio name="rate1" value=1 ng-model="srating">&nbsp; 1
-        <input type=radio name="rate1" value=2 ng-model="srating">&nbsp; 2
 
-        <input type=radio name="rate1" value=3 ng-model="srating">&nbsp; 3
-        <input type=radio name="rate1" value=4 ng-model="srating">&nbsp; 4
-        <input type=radio name="rate1" value=5 ng-model="srating">&nbsp; 5
+
+
+              <ul><button ng-click="addsafe(1)" name="1" style="background-color: #4CAF50;" value=1>1</button>
+              <button ng-click="addsafe(2)" style="background-color: #cfea22"><font color="black">2</font></button>
+              <button ng-click="addsafe(3)" style="background-color: yellow"><font color="black">3</font></button>
+              <button ng-click="addsafe(4)" style="background-color: #ea8022"><font color="black">4</font></button>
+              <button ng-click="addsafe(5)" style="background-color: red">5</button> </ul>
+
+
 
 <br>
       	<form ng-submit="addComment()" class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <textarea ng-model="comment.newcomment" maxlength=200 class="com"></textarea>
+<ul>
+				<input type="submit" />
+</ul>
+    		</form>
 
-					<input type="submit" />
-				</form>
+        <form ng-submit="addComplaint()" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <font color="black"><textarea ng-model="complaint.newcomplaint" maxlength=200 class="com"></textarea></font>
+<ul>
+        <button type="submit"><font color="black">Anonymus complaint</font></button>
+</ul>
+        </form>
 
       </font>
       </div>
-
-
-
 		</div>
