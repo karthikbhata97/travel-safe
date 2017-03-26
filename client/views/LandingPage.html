@@ -1,9 +1,10 @@
 <div>
 
 <div class=well>
-  <!--put logo here -->
-</div>
-
+  <img src="/views/touro-logo.png" width=250></img>
+  <font><i style="text-align: center;"">"LET THE WORLD TRAVEL WITH YOU"</i>
+</font></div>
+<div class="container">
 
 
 
@@ -12,6 +13,18 @@
 
 
 <style>
+
+#padding{
+  padding-top:10px;
+  border-style: solid;
+  border-color: #42a5f5;
+      border-width: 5px;
+      border-radius: 20px;
+      margin-bottom:8px;
+      margin-left: -10px;
+      margin-right: 100px;
+
+      }
 div.stars {
   width: 20px;
   display: inline-block;
@@ -33,7 +46,7 @@ input.star:checked ~ label.star:before {
   transition: all .25s;
 }
 
-input.star-5:checked ~ label.star:before {
+input.star-5:check  ed ~ label.star:before {
   color: #FE7;
   text-shadow: 0 0 20px #952;
 }
@@ -91,7 +104,7 @@ label.starnew:before {
 <style>
 
 body {
-background: url(/views/images.jpg);
+background-color: #f5f8fa;
 font-family: "Lato"
 }
 
@@ -105,6 +118,16 @@ position:absolute;
 
   top: -20;
     right: 0;
+
+    padding-top:10px;
+    border-style: solid;
+    border-color: #a9a9a9;
+        border-width: 5px;
+        border-radius: 20px;
+        margin-bottom:8px;
+        margin-right:20px;
+
+
 }
 #current .comment{
   color:black;
@@ -112,9 +135,9 @@ position:absolute;
 
 .com { width: 300px; height: 75px }
 </style>
-			<div class="col-md-8 col-sm-12" ng-repeat="item in places" >
+			<div class="col-md-8 col-sm-12" ng-repeat="item in places" id="padding">
 
-<font color="white">
+<font color="black">
           <ul>LOCATION:{{item.address}}</ul>
 			   <ul>RATING:{{item.rating}}</ul>
 			   <ul>SAFETY-RATING:{{item.safety| number: 2}}</ul>
@@ -131,10 +154,11 @@ position:absolute;
 <hr>
 
 			</div>
+    <hr>
 
 <br>
 			<div class="col-md-4 col-sm-12" ng-repeat="item in details" id="current">
-<font color="white">
+<font color="black">
         <ul>LOCATION:{{item.address}}</ul>
 			   <ul>RATING:{{item.rating}}</ul>
 			   <ul>SAFETY-RATING:{{item.safety | number: 2}}</ul>
@@ -189,4 +213,5 @@ position:absolute;
 
       </font>
       </div>
+    </div>
 		</div>
