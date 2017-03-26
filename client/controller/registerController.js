@@ -14,6 +14,7 @@ app.controller("registerController", function($scope, $location, $rootScope, $re
       data: {"userid": $scope.userid, "email": $scope.email,"password": $scope.password}
     }).then(function(data){
     if(data.data.success==true){
+      alert("success")
         $location.path('/login').replace();
     }
     else

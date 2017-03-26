@@ -147,7 +147,6 @@ position:absolute;
           <ul>LOCATION:{{item.address}}</ul>
 			   <ul>RATING:{{item.rating}}</ul>
 			   <ul>SAFETY-RATING:{{item.safety| number: 2}}</ul>
-			   <ul>GENERAL-RATING:{{item.rating| number: 2}}</ul>
          <ul>COMMENTS:</ul>
 				 <ul ng-repeat="comment in item.comments">
 						<ul>{{comment.description}} by {{comment.user}}</ul>
@@ -168,7 +167,6 @@ position:absolute;
         <ul>LOCATION:{{item.address}}</ul>
 			   <ul>RATING:{{item.rating}}</ul>
 			   <ul>SAFETY-RATING:{{item.safety | number: 2}}</ul>
-			   <ul>GENERAL-RATING:{{item.rating| number: 2}}</ul>
 			   <ul ng-repeat="comment in item.comments">
 			   	  <ul>{{comment.description}} by {{comment.user}}</ul>
 			   </ul>
@@ -193,13 +191,13 @@ position:absolute;
         <ul>SAFETY-RATE:</ul>
 
 
-
-              <ul><button ng-click="addsafe(1)" name="1" style="background-color: #4CAF50;" value=1>1</button>
-              <button ng-click="addsafe(2)" style="background-color: #cfea22"><font color="black">2</font></button>
+<ul>
+        <button ng-click="addsafe(1)" style="background-color: red">1</button>
+                <button ng-click="addsafe(2)" style="background-color: #ea8022"><font color="black">2</font></button>
               <button ng-click="addsafe(3)" style="background-color: yellow"><font color="black">3</font></button>
-              <button ng-click="addsafe(4)" style="background-color: #ea8022"><font color="black">4</font></button>
-              <button ng-click="addsafe(5)" style="background-color: red">5</button> </ul>
-
+              <button ng-click="addsafe(4)" style="background-color: #cfea22"><font color="black">4</font></button>
+              <button ng-click="addsafe(5)" name="1" style="background-color: #4CAF50;" value=5>5</button>
+</ul>
 
 
 <br>
