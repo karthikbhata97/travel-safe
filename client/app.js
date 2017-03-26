@@ -8,6 +8,13 @@ app.config(function($routeProvider) {
     controller: 'loginController'
   })
   .when('/LandingPage', {
+    resolve: {
+      "check": function($location, ActiveUser) {
+        if(!ActiveUser.getuser()) {
+          $location.path('/login');
+        }
+      }
+    },
     templateUrl: '/views/LandingPage.html',
     controller: 'userdashboardController'
   })
