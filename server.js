@@ -25,7 +25,8 @@ app.post('/login', loginController.login);
 app.get('/api/nearby', userController.listPlaces);
 app.get('/api/myplace', userController.myPlace);
 app.post('/api/addcomment', userController.addComment);
-app.post('/test', userController.safetyRatePlace);
+app.post('/test', userController.addComplaint);
+app.post('/register', loginController.register);
 
 
 app.listen(3000, function() {
