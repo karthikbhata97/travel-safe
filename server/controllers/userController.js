@@ -112,7 +112,10 @@ module.exports.listPlaces = function(req, res) {
 };
 
 module.exports.generalRatePlace = function(req, res) {
-  Place.findOne({latitude: req.body.latitude, longitude: req.body.longitude}, function(err, result) {
+  Place.findOne({ $and: [
+    {latitude: req.body.latitude},
+    {longitude: req.body.longitude}
+  ]}, function(err, result) {
     if(err) {
       console.log("Error finding places");
       console.log(err);
@@ -135,7 +138,10 @@ module.exports.generalRatePlace = function(req, res) {
 }
 
 module.exports.safetyRatePlace = function(req, res) {
-  Place.findOne({latitude: req.body.latitude, longitude: req.body.longitude}, function(err, result) {
+  Place.findOne({ $and: [
+    {latitude: req.body.latitude},
+    {longitude: req.body.longitude}
+  ]}, function(err, result) {
     if(err) {
       console.log("Error finding places");
       console.log(err);
@@ -144,7 +150,10 @@ module.exports.safetyRatePlace = function(req, res) {
       var new_data = result;
       new_data.numberOfSafetyRating = result.numberOfSafetyRating + 1;
       new_data.safety = (result.numberOfSafetyRating * result.safety + req.body.safety)/new_data.numberOfSafetyRating;
-      Place.update(result, {$set: {numberOfSafetyRating: new_data.numberOfSafetyRating, safety: new_data.safety}}, function(err, result) {
+      Place.update({ $and: [
+        {latitude: req.body.latitude},
+        {longitude: req.body.longitude}
+      ]}, {$set: {numberOfSafetyRating: new_data.numberOfSafetyRating, safety: new_data.safety}}, function(err, result) {
         if(err) {
           console.log("Error");
           console.log(err);
