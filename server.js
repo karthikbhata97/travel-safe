@@ -7,7 +7,7 @@ var express = require('express'),
     loginController = require('./server/controllers/loginController');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://localhost:27018/test');
 
 app.use(bodyParser.urlencoded({
   extended: false
