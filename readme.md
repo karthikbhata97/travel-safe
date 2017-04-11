@@ -14,3 +14,13 @@ nodejs
 '''
 node server.js
 '''
+
+
+## Contributors:
+'''
+Karthik Bhat A (me)
+Khamar Shaikh
+Manjunath J
+Nitish Bhat
+Preetham Maiya
+'''
